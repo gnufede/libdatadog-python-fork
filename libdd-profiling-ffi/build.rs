@@ -1,11 +1,11 @@
 // Copyright 2021-Present Datadog, Inc. https://www.datadoghq.com/
 // SPDX-License-Identifier: Apache-2.0
-extern crate build_common;
-
-use build_common::{embed_windows_version_info, generate_and_configure_header};
-
+// Fork of DataDog/libdatadog v48.0.0 (0be9d86) with the cbindgen header
+// generation removed (same reason as libdd-common-ffi/build.rs). The
+// Windows version info embedding is kept since it does not invoke
+// cargo metadata.
 fn main() {
-    let header_name = "profiling.h";
-    generate_and_configure_header(header_name);
-    embed_windows_version_info("datadog_profiling_ffi.dll", "Datadog libdatadog FFI");
+    // No-op: header generation and version info intentionally skipped.
+    // The version info embedding is Windows-only and irrelevant for
+    // the Linux/macOS Python extension this fork builds.
 }
